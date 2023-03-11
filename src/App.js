@@ -36,9 +36,13 @@ const TaskCount = styled.span`
 
 const Tasks = styled.div``;
 
-const List = styled.div``;
+const LIST = styled.li`
+listStyle: "none";
+text-decoration: "line-through";
+`;
 
 function App() {
+
   const [input, setInput] = useState("");
   const [completedTaskCount, setCompletedTaskCount] = useState(0);
   const [todoList, setTodoList] = useState([]);
@@ -51,8 +55,9 @@ function App() {
       {
         id: id,
         task: input,
-        completed: false,
-      },
+        complete: false,
+      }
+
     ]);
 
     setInput("");
@@ -60,7 +65,7 @@ function App() {
 
   const handleComplete = (id) => {
 
-    let list = todoList.map((task) => {
+    let list = todoList.map( (task) => {
 
       let item = {};
 
@@ -80,6 +85,8 @@ function App() {
 
       return item;
     });
+
+    setTodoList(list);
   };
 
   return (
@@ -104,13 +111,20 @@ function App() {
           <ul>
             {todoList.map((todo) => {
               return (
-                <List
+                <LIST
                   completed={todo.completed}
+
                   id={todo.id}
+
                   onClick={() => handleComplete(todo.id)}
+                  
+                  style={{
+                    listStyle:"none",
+                    textDecoration: todo.complete && "line-through",
+                  }}
                 >
                   {todo.task}
-                </List>
+                </LIST>
               );
             })}
           </ul>
