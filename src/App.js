@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 
+
 const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+ 
 `;
+
 
 const Button = styled.button`
   display: inline-block;
@@ -117,7 +120,7 @@ function App() {
                   id={todo.id}
 
                   onClick={() => handleComplete(todo.id)}
-                  
+
                   style={{
                     listStyle:"none",
                     textDecoration: todo.complete && "line-through",
