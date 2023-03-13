@@ -82,8 +82,7 @@ function App() {
 
         item = { ...task, complete: !task.complete };
       } 
-      
-      
+    
       else item = { ...task };
 
       return item;
